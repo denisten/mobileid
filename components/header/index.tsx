@@ -31,10 +31,15 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Header = () => {
+export const Header: React.FC<IHeader> = ({ handler }) => {
   return (
     <Wrapper>
-      Сомневаетесь? Протестируйте до 30 дней бесплатно! <a>Попробовать </a>
+      Сомневаетесь? Протестируйте до 30 дней бесплатно!
+      <a onClick={() => handler()}>Попробовать </a>
     </Wrapper>
   );
 };
+
+interface IHeader {
+  handler: Function;
+}

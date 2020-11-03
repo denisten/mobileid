@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { SubTitle, Title } from '../auth-info';
 import { ButtonConsult, ButtonDemo } from '../buttons';
 import { Note } from '../auth-note';
+import { IHandler } from '../about';
 
 const Wrapper = styled.div`
   width: 844px;
@@ -59,7 +60,7 @@ const ButtonsWrapper = styled.div`
   display: flex;
 `;
 
-export const Info = () => {
+export const Info: React.FC<IHandler> = ({ handler }) => {
   return (
     <Wrapper>
       <InfoTitle>
@@ -87,7 +88,7 @@ export const Info = () => {
         </div>
       </Advantages>
       <ButtonsWrapper>
-        <ButtonConsult margin="0 35px 0 0" />
+        <ButtonConsult margin="0 35px 0 0" handler={handler} />
         <ButtonDemo />
       </ButtonsWrapper>
       <Note margin="50px 0 0 0" />

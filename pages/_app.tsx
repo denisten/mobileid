@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: any) => {
   return (
     <>
       <GlobalStyle />

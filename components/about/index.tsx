@@ -61,7 +61,7 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const About = () => {
+export const About: React.FC<IHandler> = ({ handler }) => {
   return (
     <Wrapper>
       <h1>
@@ -84,9 +84,13 @@ export const About = () => {
         </p>
       </Description>
       <ButtonsWrapper>
-        <ButtonConsult margin="0 85px 0 0" />
+        <ButtonConsult margin="0 85px 0 0" handler={handler} />
         <ButtonDemo />
       </ButtonsWrapper>
     </Wrapper>
   );
 };
+
+export interface IHandler {
+  handler: Function;
+}

@@ -9,29 +9,41 @@ import {AuthPin} from "../components/auth-pin";
 import {Note} from "../components/auth-note";
 import {DesktopSlider} from "../components/desktop-slider";
 import { Info } from '../components/info';
-import styled from 'styled-components';
 import { StreamInfo } from '../components/stream-info';
 import { FAQ } from '../components/faq';
 import { FeedbackQuestion } from '../components/feedback-question';
 import { ModalWindow } from '../components/modal-window';
+import {BackgroundImg} from "../components/background-img";
 
-const Img = styled.img.attrs({src: '/static/img/backgrounds/mock.png'})`
-  position: absolute;
-  top: 4869px;
-  right: 0;
-  width: 35em;
-`
-const Wrapper = styled.div`
-  position: relative;
-`
+export enum ModalWindowContent {
+    CALL_ME_BACK = 'callMeBack',
+    CONSULT_ME = 'consultMe'
+}
 
 const HomePage = () => {
       const [modalIsOpen, setModalIsOpen] = useState(false)
+      const [modalWindowContent, setModalWindowContent] = useState<ModalWindowContent | null>(null)
+      const openModalWindow = () => {
+          setModalIsOpen(true)
+          setModalWindowContent(ModalWindowContent.CONSULT_ME)
+      }
+      const closeModalWindow = () => {
+          setModalIsOpen(false)
+          setModalWindowContent(null)
+      }
+      const openModalCallMeBack = () => {
+        setModalIsOpen(true)
+        setModalWindowContent(ModalWindowContent.CALL_ME_BACK)
+      }
+      const handleCallMeBackClick = () => {
+        setModalWindowContent(null);
+        setModalIsOpen(false);
+      }
   return (
-    <Wrapper>
-        <Header/>
-        <ModalWindow modalIsOpen={modalIsOpen}/>
-        <About/>
+    <>
+          <ModalWindow modalIsOpen={modalIsOpen} handler={closeModalWindow} content={modalWindowContent} handleCallMeBackClick={handleCallMeBackClick}/>
+          <Header handler={openModalCallMeBack}/>
+          <About handler={openModalWindow}/>
         <InfoInNumbers/>
         <SmallText/>
         <AuthInfo backgroundColor="#6e7782"/>
@@ -39,12 +51,12 @@ const HomePage = () => {
         <AuthPin backgroundColor="#e2e5eb"/>
         <Note/>
         <DesktopSlider/>
-        <Info/>
-        <Img />
-        <StreamInfo/>
+        <Info handler={openModalWindow}/>
+        <BackgroundImg />
+        <StreamInfo handler={openModalWindow}/>
         <FAQ/>
         <FeedbackQuestion/>
-    </Wrapper>
+    </>
   );
 };
 

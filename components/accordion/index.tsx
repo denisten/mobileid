@@ -76,8 +76,8 @@ export const Accordion: React.FC<IAccordion> = (props) => {
 
   useEffect(() => {
     isOpened
-      ? descRef.current.classList.add('open')
-      : descRef.current.classList.remove('open');
+      ? descRef.current?.classList.add('open')
+      : descRef.current?.classList.remove('open');
   }, [isOpened]);
 
   return (

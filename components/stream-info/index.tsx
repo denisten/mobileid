@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Title } from '../auth-info';
 import { ButtonConsult } from '../buttons';
+import { IHandler } from '../about';
 
 const Wrapper = styled.div`
   width: 844px;
@@ -34,7 +35,7 @@ const ButtonWrapper = styled.div`
   margin-top: 50px;
 `;
 
-export const StreamInfo = () => {
+export const StreamInfo: React.FC<IHandler> = ({ handler }) => {
   return (
     <Wrapper>
       <Title>
@@ -80,7 +81,7 @@ export const StreamInfo = () => {
         </div>
       </Description>
       <ButtonWrapper>
-        <ButtonConsult />
+        <ButtonConsult handler={handler} />
       </ButtonWrapper>
     </Wrapper>
   );
