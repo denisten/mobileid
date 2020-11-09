@@ -88,7 +88,7 @@ export const Accordion: React.FC<IAccordion> = (props) => {
       <Description ref={descRef}>
         <li>
           {description.map((el) => (
-            <div>{el}</div>
+            <div key={el}>{el}</div>
           ))}
         </li>
       </Description>

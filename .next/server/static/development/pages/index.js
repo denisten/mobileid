@@ -245,6 +245,7 @@ const About = ({
       columnNumber: 9
     }
   }), __jsx(_buttons__WEBPACK_IMPORTED_MODULE_2__["ButtonDemo"], {
+    handler: () => window.open("https://store.mobcon.prostream.ru/"),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -399,6 +400,7 @@ const Accordion = props => {
       columnNumber: 9
     }
   }, description.map(el => __jsx("div", {
+    key: el,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -804,12 +806,14 @@ const BackgroundImg = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.i
 /*!**************************************!*\
   !*** ./components/buttons/index.tsx ***!
   \**************************************/
-/*! exports provided: ButtonConsult, ButtonCallMeBack, ButtonDemo */
+/*! exports provided: ButtonConsult, SendButton, CancelButton, ButtonCallMeBack, ButtonDemo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ButtonConsult", function() { return ButtonConsult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendButton", function() { return SendButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CancelButton", function() { return CancelButton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ButtonCallMeBack", function() { return ButtonCallMeBack; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ButtonDemo", function() { return ButtonDemo; });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
@@ -827,7 +831,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-const ButtonConsultWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div`
+const ButtonConsultWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button`
   font-family: MuseoSansMedium, sans-serif;
   font-size: 18px;
   line-height: 60px;
@@ -847,10 +851,16 @@ const ButtonConsultWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___defa
   background-color: #c000d9;
   box-shadow: none;
   margin: ${props => props.margin};
+  :disabled {
+    background-color: #626d70;
+  }
   :hover {
     background-color: #de04fa;
     color: #fff;
   }
+`;
+const CustomButtonWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(ButtonConsultWrapper)`
+  width: auto;
 `;
 const ButtonDemoWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(ButtonConsultWrapper)`
   color: #202d3d;
@@ -858,23 +868,6 @@ const ButtonDemoWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default
   border: 2px solid #bbc1c7;
   font-weight: 700;
 `;
-const ButtonsCallMeBackWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button`
-    font-size: 18px;
-    line-height: 60px;
-    display: inline-block;
-    min-width: 220px;
-    height: 60px;
-    padding: 0 38px;
-    cursor: pointer;
-    transition: background-color .3s ease;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    background-color: #c000d9;
-    box-shadow: none;
-}`;
 const ButtonConsult = (_ref) => {
   let {
     handler
@@ -886,31 +879,59 @@ const ButtonConsult = (_ref) => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 50,
       columnNumber: 5
     }
   }), "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043A\u043E\u043D\u0441\u0443\u043B\u044C\u0442\u0430\u0446\u0438\u044E");
 };
-const ButtonCallMeBack = ({
+const SendButton = ({
+  handler,
+  disableFlag = false
+}) => {
+  return __jsx(CustomButtonWrapper, {
+    onClick: () => handler(),
+    disabled: disableFlag,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 5
+    }
+  }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C");
+};
+const CancelButton = ({
   handler
 }) => {
-  return __jsx(ButtonsCallMeBackWrapper, {
+  return __jsx(CustomButtonWrapper, {
     onClick: () => handler(),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 69,
+      columnNumber: 5
+    }
+  }, "\u041E\u0442\u043C\u0435\u043D\u0430");
+};
+const ButtonCallMeBack = ({
+  handler
+}) => {
+  return __jsx(ButtonConsultWrapper, {
+    onClick: () => handler(),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
       columnNumber: 5
     }
   }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0440\u043E\u0441 \u043D\u0430 \u0437\u0432\u043E\u043D\u043E\u043A");
 };
 const ButtonDemo = props => {
   return __jsx(ButtonDemoWrapper, _extends({}, props, {
-    onClick: () => window.open('https://store.mobcon.prostream.ru/'),
+    onClick: () => window.open("https://store.mobcon.prostream.ru/"),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 83,
       columnNumber: 5
     }
   }), "\u0414\u0435\u043C\u043E \u0434\u043E\u0441\u0442\u0443\u043F");
@@ -922,11 +943,13 @@ const ButtonDemo = props => {
 /*!*************************************************!*\
   !*** ./components/call-me-back-modal/index.tsx ***!
   \*************************************************/
-/*! exports provided: CallMeBack */
+/*! exports provided: ContentWrapper, ModalWindowContentWrapper, CallMeBack */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentWrapper", function() { return ContentWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalWindowContentWrapper", function() { return ModalWindowContentWrapper; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CallMeBack", function() { return CallMeBack; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -947,7 +970,7 @@ const ContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
   margin: auto;
 `;
-const Content = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.form`
+const ModalWindowContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.form`
   position: relative;
   max-width: 690px;
   div {
@@ -966,6 +989,9 @@ const Content = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.form`
     border: 1px solid #e9e9e9;
     border-radius: 4px;
     width: 100%;
+  }
+  .invalid {
+    border: solid 1px red;
   }
   .description {
     font-size: 14px;
@@ -993,36 +1019,36 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 58,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 59,
       columnNumber: 7
     }
-  }, __jsx(Content, {
+  }, __jsx(ModalWindowContentWrapper, {
     onSubmit: submitHandler,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 60,
       columnNumber: 9
     }
   }, __jsx("h4", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 61,
       columnNumber: 11
     }
   }, "\u0417\u0430\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0431\u0440\u0430\u0442\u043D\u044B\u0439 \u0437\u0432\u043E\u043D\u043E\u043A"), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 62,
       columnNumber: 11
     }
   }, __jsx("input", {
@@ -1033,14 +1059,14 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 63,
       columnNumber: 13
     }
   })), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 70,
       columnNumber: 11
     }
   }, __jsx("input", {
@@ -1051,7 +1077,7 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 71,
       columnNumber: 13
     }
   })), __jsx("div", {
@@ -1059,7 +1085,7 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 78,
       columnNumber: 11
     }
   }, __jsx(_buttons__WEBPACK_IMPORTED_MODULE_2__["ButtonCallMeBack"], {
@@ -1067,7 +1093,7 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 79,
       columnNumber: 13
     }
   })), __jsx("div", {
@@ -1075,10 +1101,186 @@ const CallMeBack = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 81,
       columnNumber: 11
     }
   }, "\u041D\u0430\u0436\u0430\u0432 \u043A\u043D\u043E\u043F\u043A\u0443 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0440\u043E\u0441 \u0432\u044B \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0435\u0442\u0435 \u0441\u0432\u043E\u0435 \u0441\u043E\u0433\u043B\u0430\u0441\u0438\u0435 \u043D\u0430 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0443 \u0432\u0430\u0448\u0438\u0445 \u0434\u0430\u043D\u043D\u044B\u0445"))));
+};
+
+/***/ }),
+
+/***/ "./components/consult-me/index.tsx":
+/*!*****************************************!*\
+  !*** ./components/consult-me/index.tsx ***!
+  \*****************************************/
+/*! exports provided: ConsultMe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsultMe", function() { return ConsultMe; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _call_me_back_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../call-me-back-modal */ "./components/call-me-back-modal/index.tsx");
+/* harmony import */ var _buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons */ "./components/buttons/index.tsx");
+var _jsxFileName = "/Users/denisten/workspace/mid-landing/components/consult-me/index.tsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const MultilineInput = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.textarea`
+  width: 100%;
+  min-height: 160px;
+  resize: none;
+  font-family: MuseoSans, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 24px;
+  padding: 21px 25px 19px;
+  transition: box-shadow 0.3s;
+  color: #2e3c40;
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+`;
+const regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const ConsultMe = ({
+  consultMeHandler,
+  cancelHandler
+}) => {
+  const {
+    0: email,
+    1: setEmail
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: message,
+    1: setMessage
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const inputRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  const {
+    0: hasError,
+    1: setHasError
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+
+  const emailOnChangeHandler = e => {
+    var _e$target;
+
+    // @ts-ignore
+    setEmail(e === null || e === void 0 ? void 0 : (_e$target = e.target) === null || _e$target === void 0 ? void 0 : _e$target.value);
+  };
+
+  const onBlur = () => regExp.test(String(email).toLowerCase()) ? setHasError(false) : setHasError(true);
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setTimeout(() => {
+      if (inputRef.current) {
+        var _inputRef$current;
+
+        // @ts-ignore
+        inputRef === null || inputRef === void 0 ? void 0 : (_inputRef$current = inputRef.current) === null || _inputRef$current === void 0 ? void 0 : _inputRef$current.focus();
+      }
+    }, 100);
+  }, []);
+  return __jsx(_call_me_back_modal__WEBPACK_IMPORTED_MODULE_2__["ContentWrapper"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 7
+    }
+  }, __jsx(_call_me_back_modal__WEBPACK_IMPORTED_MODULE_2__["ModalWindowContentWrapper"], {
+    onSubmit: e => consultMeHandler(e),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 9
+    }
+  }, __jsx("h4", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 11
+    }
+  }, "\u041E\u0442\u043F\u0440\u0430\u0432\u043A\u0430 \u0437\u0430\u044F\u0432\u043A\u0438 \u043D\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0443\u043B\u044C\u0442\u0430\u0446\u0438\u0438"), __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 11
+    }
+  }, __jsx("input", {
+    autoFocus: true,
+    ref: inputRef,
+    className: hasError ? 'invalid' : '',
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+    "aria-label": "Email",
+    onChange: emailOnChangeHandler,
+    onBlur: onBlur,
+    value: email,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 13
+    }
+  })), __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 11
+    }
+  }, __jsx(MultilineInput, {
+    name: "message",
+    placeholder: "\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0441\u0432\u0435\u0434\u0435\u043D\u0438\u044F",
+    maxLength: 500,
+    "aria-label": "\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0441\u0432\u0435\u0434\u0435\u043D\u0438\u044F",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 13
+    }
+  })), __jsx("div", {
+    className: "button-wrapper",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 11
+    }
+  }, __jsx(_buttons__WEBPACK_IMPORTED_MODULE_3__["SendButton"], {
+    handler: e => consultMeHandler(e),
+    disableFlag: hasError,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 13
+    }
+  }), __jsx(_buttons__WEBPACK_IMPORTED_MODULE_3__["CancelButton"], {
+    handler: cancelHandler,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82,
+      columnNumber: 13
+    }
+  })))));
 };
 
 /***/ }),
@@ -1287,6 +1489,7 @@ const FAQ = () => {
       columnNumber: 7
     }
   }, state.map((el, id) => __jsx(_accordion__WEBPACK_IMPORTED_MODULE_2__["Accordion"], {
+    key: _data__WEBPACK_IMPORTED_MODULE_3__["data"][id].title,
     isOpened: state[id],
     setIsOpened: handler,
     id: id,
@@ -1302,7 +1505,7 @@ const FAQ = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 57,
       columnNumber: 7
     }
   }, "* \u041F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E \u043A\u043B\u0438\u0435\u043D\u0442\u0435 \u043F\u0440\u0438 \u043D\u0430\u043B\u0438\u0447\u0438\u0438 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0435\u0433\u043E \u0441\u043E\u0433\u043B\u0430\u0441\u0438\u044F. \u0424\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0430\u043B \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435."));
@@ -1382,29 +1585,43 @@ const FeedbackQuestion = () => {
     1: setDislikes
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(4);
 
-  const handleYesClick = () => setLikes(likes + 1);
+  const handleYesClick = () => {
+    fetch('/api/test', {
+      method: 'POST',
+      body: JSON.stringify({
+        feedback: 'like1'
+      })
+    });
+  };
 
-  const handleNoClick = () => setDislikes(dislikes + 1);
+  const handleNoClick = () => {
+    fetch('/api/test', {
+      method: 'POST',
+      body: JSON.stringify({
+        feedback: 'dislike1'
+      })
+    });
+  };
 
   return __jsx(Wrapper, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 65,
       columnNumber: 5
     }
   }, __jsx(TitleWrapper, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, "\u042D\u0442\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0431\u044B\u043B\u0430 \u043F\u043E\u043B\u0435\u0437\u043D\u0430?"), __jsx(Options, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 67,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -1413,7 +1630,7 @@ const FeedbackQuestion = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 68,
       columnNumber: 9
     }
   }, "\uD83E\uDD29 \u0414\u0430"), __jsx("div", {
@@ -1422,14 +1639,14 @@ const FeedbackQuestion = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 71,
       columnNumber: 9
     }
   }, "\uD83E\uDD28 \u041D\u0435\u0442")), __jsx(Amount, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 75,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -1437,7 +1654,7 @@ const FeedbackQuestion = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 76,
       columnNumber: 9
     }
   }, likes), __jsx("div", {
@@ -1445,7 +1662,7 @@ const FeedbackQuestion = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 77,
       columnNumber: 9
     }
   }, dislikes)));
@@ -1821,6 +2038,7 @@ const Info = ({
       columnNumber: 9
     }
   }), __jsx(_buttons__WEBPACK_IMPORTED_MODULE_3__["ButtonDemo"], {
+    handler: () => window.open("https://store.mobcon.prostream.ru/"),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -1856,8 +2074,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages */ "./pages/index.tsx");
 /* harmony import */ var _call_me_back_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../call-me-back-modal */ "./components/call-me-back-modal/index.tsx");
+/* harmony import */ var _consult_me__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../consult-me */ "./components/consult-me/index.tsx");
 var _jsxFileName = "/Users/denisten/workspace/mid-landing/components/modal-window/index.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -1876,7 +2096,7 @@ const Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div`
   overflow-x: hidden;
   z-index: 1000;
   padding: 1.2rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-out;
   visibility: hidden;
   &.open {
     opacity: 1;
@@ -1905,7 +2125,9 @@ const ModalWindow = props => {
     modalIsOpen,
     handler,
     content,
-    handleCallMeBackClick
+    handleCallMeBackClick,
+    handleConsultMe,
+    closeModalWindow
   } = props;
 
   const closeButtonClickHandler = e => {
@@ -1918,6 +2140,37 @@ const ModalWindow = props => {
     if (e.target.getAttribute('id') === wrapperId) handler();
   };
 
+  const defineContentElement = content => {
+    switch (content) {
+      case _pages__WEBPACK_IMPORTED_MODULE_2__["ModalWindowContent"].CALL_ME_BACK:
+        return __jsx(_call_me_back_modal__WEBPACK_IMPORTED_MODULE_3__["CallMeBack"], {
+          handler: handleCallMeBackClick,
+          __self: undefined,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63,
+            columnNumber: 16
+          }
+        });
+
+      case _pages__WEBPACK_IMPORTED_MODULE_2__["ModalWindowContent"].CONSULT_ME:
+        return __jsx(_consult_me__WEBPACK_IMPORTED_MODULE_4__["ConsultMe"], {
+          consultMeHandler: handleConsultMe,
+          cancelHandler: closeModalWindow,
+          __self: undefined,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65,
+            columnNumber: 16
+          }
+        });
+
+      default:
+        return null;
+    }
+  };
+
+  const contentElement = defineContentElement(content);
   return __jsx(Wrapper, {
     id: wrapperId,
     className: modalIsOpen ? 'open' : '',
@@ -1925,7 +2178,7 @@ const ModalWindow = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 73,
       columnNumber: 5
     }
   }, __jsx(CloseButton, {
@@ -1933,18 +2186,10 @@ const ModalWindow = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 78,
       columnNumber: 7
     }
-  }, "X"), content === _pages__WEBPACK_IMPORTED_MODULE_2__["ModalWindowContent"].CALL_ME_BACK ? __jsx(_call_me_back_modal__WEBPACK_IMPORTED_MODULE_3__["CallMeBack"], {
-    handler: handleCallMeBackClick,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 54
-    }
-  }) : '');
+  }, "X"), contentElement);
 };
 
 /***/ }),
@@ -2490,8 +2735,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_feedback_question__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/feedback-question */ "./components/feedback-question/index.tsx");
 /* harmony import */ var _components_modal_window__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/modal-window */ "./components/modal-window/index.tsx");
 /* harmony import */ var _components_background_img__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/background-img */ "./components/background-img/index.ts");
+/* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! emailjs-com */ "emailjs-com");
+/* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(emailjs_com__WEBPACK_IMPORTED_MODULE_16__);
 var _jsxFileName = "/Users/denisten/workspace/mid-landing/pages/index.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2540,20 +2788,31 @@ const HomePage = () => {
     setModalWindowContent(ModalWindowContent.CALL_ME_BACK);
   };
 
-  const handleCallMeBackClick = () => {
-    setModalWindowContent(null);
-    setModalIsOpen(false);
+  const handleConsultMe = e => {
+    e === null || e === void 0 ? void 0 : e.preventDefault();
+    closeModalWindow();
+
+    try {
+      emailjs_com__WEBPACK_IMPORTED_MODULE_16__["send"]("service_wv4dcmn", "template_0ivvt26");
+    } catch (e) {
+      debugger;
+    }
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    emailjs_com__WEBPACK_IMPORTED_MODULE_16__["init"]("user_H3ZxuUJ223G9Qu90RDP4U");
+  }, []);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_modal_window__WEBPACK_IMPORTED_MODULE_14__["ModalWindow"], {
+    closeModalWindow: closeModalWindow,
     modalIsOpen: modalIsOpen,
     handler: closeModalWindow,
     content: modalWindowContent,
-    handleCallMeBackClick: handleCallMeBackClick,
+    handleCallMeBackClick: closeModalWindow,
+    handleConsultMe: handleConsultMe,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 52,
       columnNumber: 11
     }
   }), __jsx(_components_header__WEBPACK_IMPORTED_MODULE_1__["Header"], {
@@ -2561,7 +2820,7 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 60,
       columnNumber: 11
     }
   }), __jsx(_components_about__WEBPACK_IMPORTED_MODULE_2__["About"], {
@@ -2569,21 +2828,21 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 61,
       columnNumber: 11
     }
   }), __jsx(_components_info_in_numbers__WEBPACK_IMPORTED_MODULE_3__["InfoInNumbers"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 62,
       columnNumber: 9
     }
   }), __jsx(_components_small_text__WEBPACK_IMPORTED_MODULE_4__["SmallText"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 63,
       columnNumber: 9
     }
   }), __jsx(_components_auth_info__WEBPACK_IMPORTED_MODULE_5__["AuthInfo"], {
@@ -2591,7 +2850,7 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 64,
       columnNumber: 9
     }
   }), __jsx(_components_quick_auth_info__WEBPACK_IMPORTED_MODULE_6__["QuickAuthInfo"], {
@@ -2599,7 +2858,7 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 65,
       columnNumber: 9
     }
   }), __jsx(_components_auth_pin__WEBPACK_IMPORTED_MODULE_7__["AuthPin"], {
@@ -2607,21 +2866,21 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 66,
       columnNumber: 9
     }
   }), __jsx(_components_auth_note__WEBPACK_IMPORTED_MODULE_8__["Note"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 67,
       columnNumber: 9
     }
   }), __jsx(_components_desktop_slider__WEBPACK_IMPORTED_MODULE_9__["DesktopSlider"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 68,
       columnNumber: 9
     }
   }), __jsx(_components_info__WEBPACK_IMPORTED_MODULE_10__["Info"], {
@@ -2629,14 +2888,14 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 69,
       columnNumber: 9
     }
   }), __jsx(_components_background_img__WEBPACK_IMPORTED_MODULE_15__["BackgroundImg"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 70,
       columnNumber: 9
     }
   }), __jsx(_components_stream_info__WEBPACK_IMPORTED_MODULE_11__["StreamInfo"], {
@@ -2644,21 +2903,21 @@ const HomePage = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 71,
       columnNumber: 9
     }
   }), __jsx(_components_faq__WEBPACK_IMPORTED_MODULE_12__["FAQ"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 72,
       columnNumber: 9
     }
   }), __jsx(_components_feedback_question__WEBPACK_IMPORTED_MODULE_13__["FeedbackQuestion"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 73,
       columnNumber: 9
     }
   }));
@@ -2677,6 +2936,17 @@ const HomePage = () => {
 
 module.exports = __webpack_require__(/*! /Users/denisten/workspace/mid-landing/pages/index.tsx */"./pages/index.tsx");
 
+
+/***/ }),
+
+/***/ "emailjs-com":
+/*!******************************!*\
+  !*** external "emailjs-com" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("emailjs-com");
 
 /***/ }),
 

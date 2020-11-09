@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import React from 'react';
+import { IHandler } from '../about';
 
-const ButtonConsultWrapper = styled.div<IButton>`
+const ButtonConsultWrapper = styled.button<IButtonWrapper>`
   font-family: MuseoSansMedium, sans-serif;
   font-size: 18px;
   line-height: 60px;
@@ -21,10 +22,17 @@ const ButtonConsultWrapper = styled.div<IButton>`
   background-color: #c000d9;
   box-shadow: none;
   margin: ${(props) => props.margin};
+  :disabled {
+    background-color: #626d70;
+  }
   :hover {
     background-color: #de04fa;
     color: #fff;
   }
+`;
+
+const CustomButtonWrapper = styled(ButtonConsultWrapper)`
+  width: auto;
 `;
 
 const ButtonDemoWrapper = styled(ButtonConsultWrapper)`
@@ -33,24 +41,6 @@ const ButtonDemoWrapper = styled(ButtonConsultWrapper)`
   border: 2px solid #bbc1c7;
   font-weight: 700;
 `;
-
-const ButtonsCallMeBackWrapper = styled.button`
-    font-size: 18px;
-    line-height: 60px;
-    display: inline-block;
-    min-width: 220px;
-    height: 60px;
-    padding: 0 38px;
-    cursor: pointer;
-    transition: background-color .3s ease;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    background-color: #c000d9;
-    box-shadow: none;
-}`
 
 export const ButtonConsult: React.FC<IButtonConsult> = ({
   handler,
@@ -63,31 +53,50 @@ export const ButtonConsult: React.FC<IButtonConsult> = ({
   );
 };
 
-export const ButtonCallMeBack: React.FC<{handler: Function}> = ({handler}) => {
+export const SendButton: React.FC<IButton> = ({
+  handler,
+  disableFlag = false,
+}) => {
   return (
-    <ButtonsCallMeBackWrapper
-      onClick={() => handler()}
-    >
-    Отправить запрос на звонок
-    </ButtonsCallMeBackWrapper>
-  )
-}
+    <CustomButtonWrapper onClick={() => handler()} disabled={disableFlag}>
+      Отправить
+    </CustomButtonWrapper>
+  );
+};
+
+export const CancelButton: React.FC<IHandler> = ({ handler }) => {
+  return (
+    <CustomButtonWrapper onClick={() => handler()}>Отмена</CustomButtonWrapper>
+  );
+};
+
+export const ButtonCallMeBack: React.FC<IHandler> = ({ handler }) => {
+  return (
+    <ButtonConsultWrapper onClick={() => handler()}>
+      Отправить запрос на звонок
+    </ButtonConsultWrapper>
+  );
+};
 
 export const ButtonDemo: React.FC<IButton> = (props) => {
   return (
     <ButtonDemoWrapper
       {...props}
-      onClick={() => window.open('https://store.mobcon.prostream.ru/')}
+      onClick={() => window.open(process.env.demoUrl)}
     >
       Демо доступ
     </ButtonDemoWrapper>
   );
 };
 
-interface IButton {
-  margin?: string;
+interface IButton extends IButtonWrapper {
+  disableFlag?: boolean;
+  handler: Function;
 }
 
+interface IButtonWrapper {
+  margin?: string;
+}
 interface IButtonConsult extends IButton {
   handler: Function;
 }

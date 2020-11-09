@@ -29,6 +29,10 @@ module.exports = withFonts(
         use: ['file-loader'],
       })
       return config;
+    },
+    env: {
+      demoUrl: 'https://store.mobcon.prostream.ru/',
+      dataBaseUrl: 'mongodb://den:denlikepro@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false'
     }
   })
 );

@@ -49,8 +49,18 @@ export const FeedbackQuestion = () => {
   const [likes, setLikes] = useState(24);
   const [dislikes, setDislikes] = useState(4);
 
-  const handleYesClick = () => setLikes(likes + 1);
-  const handleNoClick = () => setDislikes(dislikes + 1);
+  const handleYesClick = () => {
+    fetch('/api/test', {
+      method: 'POST',
+      body: JSON.stringify({feedback: 'like'})
+    })
+  }
+  const handleNoClick = () => {
+    fetch('/api/test', {
+      method: 'POST',
+      body: JSON.stringify({feedback: 'dislike'})
+    })
+  };
   return (
     <Wrapper>
       <TitleWrapper>Эта страница была полезна?</TitleWrapper>

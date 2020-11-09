@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import { ButtonCallMeBack } from '../buttons';
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   max-width: 800px;
   position: relative;
   padding: 1.2rem;
@@ -12,7 +12,7 @@ const ContentWrapper = styled.div`
   margin: auto;
 `;
 
-const Content = styled.form`
+export const ModalWindowContentWrapper = styled.form`
   position: relative;
   max-width: 690px;
   div {
@@ -32,6 +32,9 @@ const Content = styled.form`
     border-radius: 4px;
     width: 100%;
   }
+  .invalid {
+    border: solid 1px red;
+  }
   .description {
     font-size: 14px;
     line-height: 1.43;
@@ -46,15 +49,15 @@ const Content = styled.form`
     justify-content: space-around;
   }
 `;
-export const CallMeBack: React.FC<ICallMeBack> = ({handler}) => {
-  const submitHandler = (e:FormEvent) => {
+export const CallMeBack: React.FC<ICallMeBack> = ({ handler }) => {
+  const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     handler();
-  }
+  };
   return (
     <ContentWrapper>
       <div>
-        <Content onSubmit={submitHandler}>
+        <ModalWindowContentWrapper onSubmit={submitHandler}>
           <h4>Заказать обратный звонок</h4>
           <div>
             <input
@@ -73,18 +76,17 @@ export const CallMeBack: React.FC<ICallMeBack> = ({handler}) => {
             />
           </div>
           <div className="button-wrapper">
-            <ButtonCallMeBack handler={handler}/>
+            <ButtonCallMeBack handler={handler} />
           </div>
           <div className="description">
-              Нажав кнопку отправить запрос вы подтверждаете свое согласие на
-              обработку ваших данных
+            Нажав кнопку отправить запрос вы подтверждаете свое согласие на
+            обработку ваших данных
           </div>
-        </Content>
+        </ModalWindowContentWrapper>
       </div>
     </ContentWrapper>
   );
 };
-
 
 interface ICallMeBack {
   handler: Function;
