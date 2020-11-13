@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import * as React from "react";
+import App from 'next/app';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -72,6 +73,13 @@ const MyApp = ({ Component, pageProps }: any) => {
       <Component {...pageProps} />
     </>
   );
+};
+
+MyApp.getInitialProps = async (appContext: any) => {
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getInitialProps(appContext);
+
+  return { ...appProps };
 };
 
 export default MyApp;

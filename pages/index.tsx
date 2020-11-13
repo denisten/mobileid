@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useEffect, useState } from 'react';
 import {Header} from "../components/header";
 import {About} from "../components/about";
 import {InfoInNumbers} from "../components/info-in-numbers";
@@ -11,16 +11,19 @@ import {DesktopSlider} from "../components/desktop-slider";
 import { Info } from '../components/info';
 import { StreamInfo } from '../components/stream-info';
 import { FAQ } from '../components/faq';
-import { FeedbackQuestion } from '../components/feedback-question';
+import { FeedbackQuestion, IFeedbackQuestion } from '../components/feedback-question';
 import { ModalWindow } from '../components/modal-window';
 import {BackgroundImg} from "../components/background-img";
+import * as emailJs  from 'emailjs-com';
+import { connectToDB } from '../utils/connect-to-db';
 
 export enum ModalWindowContent {
     CALL_ME_BACK = 'callMeBack',
     CONSULT_ME = 'consultMe'
 }
 
-const HomePage = () => {
+const HomePage: React.FC<IFeedbackQuestion> = (props) => {
+  const {likes, dislikes} = props;
       const [modalIsOpen, setModalIsOpen] = useState(false)
       const [modalWindowContent, setModalWindowContent] = useState<ModalWindowContent | null>(null)
       const openModalWindow = () => {
@@ -35,13 +38,29 @@ const HomePage = () => {
         setModalIsOpen(true)
         setModalWindowContent(ModalWindowContent.CALL_ME_BACK)
       }
-      const handleCallMeBackClick = () => {
-        setModalWindowContent(null);
-        setModalIsOpen(false);
-      }
+      const handleConsultMe = (e: FormEvent | MouseEvent) => {
+        e?.preventDefault();
+        closeModalWindow();
+        try {
+          emailJs.send("service_wv4dcmn","template_0ivvt26")
+        } catch (e) {
+          debugger;
+        }
+  }
+  useEffect(() => {
+    emailJs.init("user_H3ZxuUJ223G9Qu90RDP4U");
+  }, [])
+
   return (
     <>
-          <ModalWindow modalIsOpen={modalIsOpen} handler={closeModalWindow} content={modalWindowContent} handleCallMeBackClick={handleCallMeBackClick}/>
+          <ModalWindow
+            closeModalWindow={closeModalWindow}
+            modalIsOpen={modalIsOpen}
+            handler={closeModalWindow}
+            content={modalWindowContent}
+            handleCallMeBackClick={closeModalWindow}
+            handleConsultMe={handleConsultMe}
+          />
           <Header handler={openModalCallMeBack}/>
           <About handler={openModalWindow}/>
         <InfoInNumbers/>
@@ -55,9 +74,31 @@ const HomePage = () => {
         <BackgroundImg />
         <StreamInfo handler={openModalWindow}/>
         <FAQ/>
-        <FeedbackQuestion/>
+        <FeedbackQuestion likes={likes} dislikes={dislikes}/>
     </>
   );
 };
 
+const initDBData = {
+  likes: 0,
+  dislikes: 0,
+}
+
+export const getStaticProps = async () : Promise<{ props: IFeedbackQuestion }> => {
+  const collection = await connectToDB();
+  // await collection.insertOne({...initDBData})
+  const data = await collection.findOne({}, { fields: { _id: 0}});
+  if(!data) {
+    await collection.insertOne(initDBData);
+    return {
+      props: initDBData
+    }
+  } else {
+  return {
+    props: {
+      likes: data.likes,
+      dislikes: data.dislikes
+    },
+  }}
+}
 export default HomePage;

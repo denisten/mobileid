@@ -45,6 +45,7 @@ export const FAQ = () => {
       <AccordionWrapper>
         {state.map((el, id) => (
           <Accordion
+            key={data[id].title}
             isOpened={state[id]}
             setIsOpened={handler}
             id={id}

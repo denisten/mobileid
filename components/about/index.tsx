@@ -85,7 +85,7 @@ export const About: React.FC<IHandler> = ({ handler }) => {
       </Description>
       <ButtonsWrapper>
         <ButtonConsult margin="0 85px 0 0" handler={handler} />
-        <ButtonDemo />
+        <ButtonDemo handler={() => window.open(process.env.demoUrl)} />
       </ButtonsWrapper>
     </Wrapper>
   );
