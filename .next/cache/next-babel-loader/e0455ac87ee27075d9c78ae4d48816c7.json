@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const isServer = () => !window;","map":{"version":3,"sources":["/Users/denisten/workspace/mid-landing/utils/is-server/index.ts"],"names":["isServer","window"],"mappings":"AAAA,OAAO,MAAMA,QAAQ,GAAG,MAAM,CAACC,MAAxB","sourcesContent":["export const isServer = () => !window;\n"]},"metadata":{},"sourceType":"module"}
