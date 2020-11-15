@@ -5,4 +5,7 @@ export const BackgroundImg = styled.img.attrs({src: '/static/img/backgrounds/moc
   top: 4869px;
   right: 0;
   width: 35em;
+  @media (max-width: 1279px) {
+    display: none;
+  }
 `

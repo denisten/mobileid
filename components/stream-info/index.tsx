@@ -25,22 +25,72 @@ const Wrapper = styled.div`
     font-family: MuseoSans, sans-serif;
     margin-bottom: 30px;
   }
+  @media (max-width: 1279px) {
+    width: auto;
+    margin: 150px 30px 50px;
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+}
 `;
 const Description = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  h5 {
+    @media (max-width: 1279px) {
+          margin-left: 30px;
+    }
+    @media (max-width: 767px) {
+    margin-left: 0;
+    font-size: 22px;
+}
+  }
+  p {
+    @media (max-width: 1279px) {
+      width: auto;
+      margin: 0 30px 30px;
+    }
+    @media (max-width: 767px){
+    font-size: 17px;
+}
+  }
+  @media (max-width: 767px){
+    flex-direction: column;
+    align-items: center;
+    margin-top: 34px;
+}
 `;
 const ButtonWrapper = styled.div`
   margin-top: 50px;
+  @media (max-width: 1279px) {
+    margin: 50px auto 0 30px;
+  }
+  @media (max-width: 767px) {
+    margin-top: 30px;
+    margin-left: 0;
+}
 `;
+
+const StreamInfoTitle = styled.div`
+  span {
+    color: #c000d9;
+  }
+  font-size: 26px;
+  font-weight: 600;
+  font-family: MuseoSansBold,sans-serif;
+@media (max-width: 767px) {
+    font-size: 35px;
+    line-height: 47px;
+}
+`
 
 export const StreamInfo: React.FC<IHandler> = ({ handler }) => {
   return (
     <Wrapper>
-      <Title>
+      <StreamInfoTitle>
         Мобильный ID и <span>Stream</span>
-      </Title>
+      </StreamInfoTitle>
       <Description>
         <div>
           <h5>Удобно</h5>

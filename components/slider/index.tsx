@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div<ISliderWrapper>`
@@ -10,9 +10,21 @@ const Wrapper = styled.div<ISliderWrapper>`
   background-image: ${(props) =>
     props.removeBackground
       ? 'none'
-      : 'url("https://mobilestream.ru//landing/images/mobileid/iphone-transparent.png")'};
+      : 'url("/static/img/iphone.webp")'};
   background-size: contain;
   box-shadow: ${(props) => props.boxShadow || 'inherit'};
+  @media(max-width: 1279px) {
+  ${props => props.resizable ? `
+    right: 50%;
+    top: -105px;
+    transform: translateX(50%);` : ''}
+  }
+  
+  @media (max-width: 767px) {
+   ${props => !props.resizable ? `
+      width: auto;
+      max-height: 50vw;` : ''}
+    }
   .wrapper {
     overflow: hidden;
     display: flex;
@@ -61,10 +73,17 @@ export const Slider: React.FC<ISlider> = ({
   imgArray,
   ...props
 }) => {
+  const timer = useRef(0);
   const [selectedImg, setSelectedImg] = useState(0);
   const handleControllerClick = (id: number) => {
     setSelectedImg(id);
   };
+  useEffect(() => {
+    timer.current = setTimeout(() => {
+      setSelectedImg(prevState => (prevState + 1) % imgArray.length)
+    }, 2500)
+    return () => clearTimeout(timer.current)
+  }, [timer.current])
   return (
     <Wrapper {...props}>
       <div className="wrapper">
@@ -110,4 +129,5 @@ interface ISliderWrapper {
   imgHeight?: string;
   imgPosition?: string;
   boxShadow?: string;
+  resizable: boolean;
 }

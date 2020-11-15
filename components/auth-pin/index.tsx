@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { Slider } from '../slider';
 import {
   Info,
-  ISliderWithDescription,
+  ISliderWithDescription, SimpleSubTitle, SimpleTitle,
   SliderWrapper,
   SubTitle,
-  Title,
 } from '../auth-info';
 import { Description } from '../quick-auth-info';
 
@@ -23,11 +22,6 @@ const Wrapper = styled(SliderWrapper)`
     font-weight: 600;
   }
 `;
-
-const AuthPinTitle = styled(Title)`
-  font-family: MuseoSans, sans-serif;
-`;
-
 const imgArray = [
   '/static/img/slider-3/3.1.png',
   '/static/img/slider-3/3.2.png',
@@ -40,7 +34,7 @@ export const AuthPin: React.FC<ISliderWithDescription> = (props) => {
   return (
     <Wrapper {...props}>
       <Info>
-        <AuthPinTitle>Авторизация с вводом PIN-кода *</AuthPinTitle>
+        <SimpleTitle>Авторизация с вводом PIN-кода *</SimpleTitle>
         <Description>
           На сайтах с повышенными требованиями к безопасности, а также где в
           онлайн требуется подтверждение значимых операций, заказа, платежной
@@ -48,7 +42,7 @@ export const AuthPin: React.FC<ISliderWithDescription> = (props) => {
           ПИН-кода, который создается клиентом и храниться на SIM-карте
           телефона, обеспечивая высокую надежность и защищенность данных
         </Description>
-        <SubTitle>Возможности</SubTitle>
+        <SimpleSubTitle>Возможности</SimpleSubTitle>
         <ul>
           <li>Единый PIN-код для всех операций</li>
           <li>
@@ -61,7 +55,7 @@ export const AuthPin: React.FC<ISliderWithDescription> = (props) => {
           </li>
         </ul>
       </Info>
-      <Slider imgArray={imgArray} controllerColor="#6e7782" />
+      <Slider imgArray={imgArray} controllerColor="#6e7782" resizable={true}/>
     </Wrapper>
   );
 };

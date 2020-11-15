@@ -13,6 +13,10 @@ const TitleWrapper = styled.div`
   font-weight: 600;
   text-align: center;
   padding: 0 30px;
+  @media (max-width: 767px) {
+    font-size: 20px;
+    line-height: 15px;
+}
 `;
 const Options = styled.div`
   display: flex;
@@ -22,6 +26,9 @@ const Options = styled.div`
   margin-top: 45px;
   margin-bottom: 20px;
   font-family: MuseoSansMedium, sans-serif;
+  @media (max-width: 767px){
+    font-size: 20px;
+}
   .option {
     cursor: pointer;
     width: 4em;
@@ -37,6 +44,9 @@ const Amount = styled.div`
   font-size: 27px;
   font-family: MuseoSansMedium, sans-serif;
   color: #001424;
+  @media (max-width: 767px) {
+    font-size: 20px;
+}
   .option2 {
     cursor: pointer;
     width: 4em;

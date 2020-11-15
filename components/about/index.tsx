@@ -22,6 +22,12 @@ const Wrapper = styled.div`
     font-size: 45px;
     line-height: 57px;
   }
+  @media (max-width: 767px) {
+    width: auto;
+    text-align: center;
+    font-size: 30px;
+    line-height: 42px;
+  }
   h1 {
     line-height: 1.07;
   }
@@ -33,6 +39,11 @@ const H1Description = styled.div`
   color: #202d3d;
   margin-top: 15px;
   font-weight: 400;
+  @media (max-width: 767px) {
+    width: auto;
+    text-align: center;
+    font-size: 9px;
+  }
 `;
 
 const Description = styled.div`
@@ -41,27 +52,12 @@ const Description = styled.div`
   flex-direction: column;
   width: 560px;
   p {
+    font-size: 17px;
     margin: 18px 0 0 0;
   }
 `;
-const ButtonsWrapper = styled.div`
-  width: 844px;
-  display: flex;
-  margin: 110px auto;
-  @media (max-width: 1279px) {
-    padding-left: 30px;
-  }
-  @media (max-width: 767px) {
-    width: auto;
-    padding-left: 0;
-    margin: 100px auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-`;
 
-export const About: React.FC<IHandler> = ({ handler }) => {
+export const About= () => {
   return (
     <Wrapper>
       <h1>
@@ -83,10 +79,6 @@ export const About: React.FC<IHandler> = ({ handler }) => {
           автозаполнению данных.
         </p>
       </Description>
-      <ButtonsWrapper>
-        <ButtonConsult margin="0 85px 0 0" handler={handler} />
-        <ButtonDemo handler={() => window.open(process.env.demoUrl)} />
-      </ButtonsWrapper>
     </Wrapper>
   );
 };

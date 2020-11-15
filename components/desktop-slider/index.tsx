@@ -5,21 +5,46 @@ import { Slider } from '../slider';
 const Wrapper = styled.div`
   width: 868px;
   margin: 142px auto 50px;
+  font-family: MuseoSansBold,sans-serif;
+  @media (max-width: 767px) {
+    width: auto;
+}
 `;
 
 const Title = styled.div`
-  font-family: MuseoSansBoldest, sans-serif;
+  font-family: MuseoSansBold, sans-serif;
   font-weight: 900;
   width: 868px;
   height: 297px;
   font-size: 48px;
   line-height: 58px;
   color: #001424;
+  @media (max-width: 1279px) {
+    width: auto;
+    height: auto;
+    font-size: 30px;
+    line-height: 40px;
+    padding: 0 30px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 767px){
+    text-align: center;
+    font-size: 25px;
+    line-height: 35px;
+}
 `;
 const SliderWrapper = styled.div`
   position: relative;
   width: 761px;
   height: 428px;
+  @media (max-width: 1279px) {
+    margin: auto;
+  }
+  @media (max-width: 767px){
+    width: auto;
+    max-height: 50vw;
+    margin: 0 30px;
+}
 `;
 
 const imgArray = [
@@ -47,6 +72,7 @@ export const DesktopSlider = () => {
           height="428px"
           removeBackground={true}
           position="initial"
+          resizable={false}
         />
       </SliderWrapper>
     </Wrapper>

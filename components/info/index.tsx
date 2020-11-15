@@ -9,6 +9,9 @@ const Wrapper = styled.div`
   width: 844px;
   margin: 130px auto 50px;
   font-family: MuseoSansMedium, sans-serif;
+  @media (max-width: 1279px){
+    width: auto;
+   }
 `;
 
 const InfoTitle = styled(Title)`
@@ -17,6 +20,12 @@ const InfoTitle = styled(Title)`
   font-size: 26px;
   color: #001424;
   font-weight: 700;
+  @media (max-width: 1279px){ 
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding: 0 30px;
+  }
 `;
 const Advantages = styled.div`
   display: flex;
@@ -24,6 +33,14 @@ const Advantages = styled.div`
   width: 844px;
   margin-top: 50px;
   margin-bottom: 50px;
+  > div {
+    @media (max-width: 1279px){ 
+      width: 50%;
+    } 
+    @media (max-width: 767px) {
+    width: 75%;
+}
+  }
   ul {
     width: 380px;
     height: auto;
@@ -31,6 +48,17 @@ const Advantages = styled.div`
     margin-top: 15px;
     padding: 0;
     list-style: none;
+    @media (max-width: 1279px) {
+      width: auto;
+      height: auto;
+      margin-bottom: 15px;
+      margin-left: 30px;
+      margin-right: 10px;
+    }
+    @media (max-width: 767px){
+    margin-left: auto;
+    margin-right: auto;
+}
   }
   li {
     font-size: 18px;
@@ -42,6 +70,9 @@ const Advantages = styled.div`
     color: #2e3c40;
     font-family: MuseoSans, sans-serif;
     font-weight: 300;
+    @media (max-width: 767px){
+      font-size: 14px;
+    }
   }
   li:before {
     top: 0.8em;
@@ -54,10 +85,30 @@ const Advantages = styled.div`
     border-radius: 100%;
     background-color: #000;
   }
+  @media (max-width: 1279px){ 
+    width: auto;
+  }
+  @media (max-width: 767px) {
+      height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const ButtonsWrapper = styled.div`
   width: 800px;
   display: flex;
+  @media (max-width: 1279px) {
+    width: auto;
+    height: auto;
+    justify-content: center;
+  }
+  @media (max-width: 767px) {
+    height: 160px;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 `;
 
 export const Info: React.FC<IHandler> = ({ handler }) => {
