@@ -78,7 +78,10 @@ export const ConsultMe: React.FC<IConsultMe> = ({
             />
           </div>
           <div className="button-wrapper">
-            <SendButton handler={(e: MouseEvent) => consultMeHandler(e)} disableFlag={hasError} />
+            <SendButton
+              handler={(e: MouseEvent) => consultMeHandler(e)}
+              disableFlag={hasError}
+            />
             <CancelButton handler={cancelHandler} />
           </div>
         </ModalWindowContentWrapper>

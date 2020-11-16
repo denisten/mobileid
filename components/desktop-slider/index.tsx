@@ -5,10 +5,10 @@ import { Slider } from '../slider';
 const Wrapper = styled.div`
   width: 868px;
   margin: 142px auto 50px;
-  font-family: MuseoSansBold,sans-serif;
+  font-family: MuseoSansBold, sans-serif;
   @media (max-width: 767px) {
     width: auto;
-}
+  }
 `;
 
 const Title = styled.div`
@@ -27,11 +27,11 @@ const Title = styled.div`
     padding: 0 30px;
     margin-bottom: 30px;
   }
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     text-align: center;
     font-size: 25px;
     line-height: 35px;
-}
+  }
 `;
 const SliderWrapper = styled.div`
   position: relative;
@@ -40,11 +40,11 @@ const SliderWrapper = styled.div`
   @media (max-width: 1279px) {
     margin: auto;
   }
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     width: auto;
     max-height: 50vw;
     margin: 0 30px;
-}
+  }
 `;
 
 const imgArray = [

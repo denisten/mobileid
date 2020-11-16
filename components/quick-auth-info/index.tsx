@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { Slider } from '../slider';
 import {
   Info,
-  ISliderWithDescription, SimpleSubTitle, SimpleTitle,
+  ISliderWithDescription,
+  SimpleSubTitle,
+  SimpleTitle,
   SliderWrapper,
 } from '../auth-info';
 
@@ -21,7 +23,7 @@ export const Description = styled.div`
   margin-bottom: 35px;
   font-weight: 300;
   @media (max-width: 1279px) {
-      width: auto;
+    width: auto;
     height: auto;
   }
   @media (max-width: 767px) {

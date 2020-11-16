@@ -27,7 +27,7 @@ export const SliderWrapper = styled.div<IWrapper>`
       font-size: 18px;
       position: relative;
       @media (max-width: 767px) {
-        font-size: 14px;  
+        font-size: 14px;
         padding: 0 0 0 24px;
       }
     }
@@ -62,7 +62,7 @@ export const SliderWrapper = styled.div<IWrapper>`
       width: auto;
       height: auto;
     }
-    @media (max-width: 767px){ 
+    @media (max-width: 767px) {
       font-size: 14px;
       line-height: 17px;
     }
@@ -94,34 +94,33 @@ export const Info = styled.div`
 export const SimpleTitle = styled.div`
   font-size: 26px;
   font-weight: 600;
-  font-family: MuseoSansBold,sans-serif;
-  @media (max-width: 1279px){
+  font-family: MuseoSansBold, sans-serif;
+  @media (max-width: 1279px) {
     text-align: center;
   }
-  @media (max-width: 767px){ 
+  @media (max-width: 767px) {
     text-align: center;
     font-size: 21px;
   }
-`
-export const Title = styled(SimpleTitle)`
 `;
+export const Title = styled(SimpleTitle)``;
 export const SimpleSubTitle = styled.div`
   font-size: 23px;
   font-weight: 600;
-  font-family: MuseoSansBold,sans-serif;
-  @media ( max-width: 1279px) {
+  font-family: MuseoSansBold, sans-serif;
+  @media (max-width: 1279px) {
     padding: 0 30px;
     text-align: center;
   }
-  @media (max-width: 767px){ 
-      text-align: center;
+  @media (max-width: 767px) {
+    text-align: center;
     font-size: 18px;
   }
-`
+`;
 export const SubTitle = styled(SimpleSubTitle)`
-@media (max-width: 767px){
+  @media (max-width: 767px) {
     font-size: 18px;
-}
+  }
 `;
 const imgArray = [
   '/static/img/slider-1/1.1.png',

@@ -57,7 +57,7 @@ const Description = styled.div`
   }
 `;
 
-export const About= () => {
+export const About = () => {
   return (
     <Wrapper>
       <h1>

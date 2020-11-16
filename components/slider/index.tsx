@@ -8,23 +8,27 @@ const Wrapper = styled.div<ISliderWrapper>`
   right: ${(props) => props.right || '80px'};
   top: ${(props) => props.top || '-105px'};
   background-image: ${(props) =>
-    props.removeBackground
-      ? 'none'
-      : 'url("/static/img/iphone.webp")'};
+    props.removeBackground ? 'none' : 'url("/static/img/iphone.webp")'};
   background-size: contain;
   box-shadow: ${(props) => props.boxShadow || 'inherit'};
-  @media(max-width: 1279px) {
-  ${props => props.resizable ? `
+  @media (max-width: 1279px) {
+    ${(props) =>
+      props.resizable
+        ? `
     right: 50%;
     top: -105px;
-    transform: translateX(50%);` : ''}
+    transform: translateX(50%);`
+        : ''}
   }
-  
+
   @media (max-width: 767px) {
-   ${props => !props.resizable ? `
+    ${(props) =>
+      !props.resizable
+        ? `
       width: auto;
-      max-height: 50vw;` : ''}
-    }
+      max-height: 50vw;`
+        : ''}
+  }
   .wrapper {
     overflow: hidden;
     display: flex;
@@ -80,10 +84,10 @@ export const Slider: React.FC<ISlider> = ({
   };
   useEffect(() => {
     timer.current = setTimeout(() => {
-      setSelectedImg(prevState => (prevState + 1) % imgArray.length)
-    }, 2500)
-    return () => clearTimeout(timer.current)
-  }, [timer.current])
+      setSelectedImg((prevState) => (prevState + 1) % imgArray.length);
+    }, 2500);
+    return () => clearTimeout(timer.current);
+  }, [timer.current]);
   return (
     <Wrapper {...props}>
       <div className="wrapper">

@@ -35,8 +35,8 @@ const InfoWrapper = styled.div`
     line-height: 1.56;
     color: #5a6d73;
   }
-  @media (max-width: 767px){ 
-      margin-right: 0;
+  @media (max-width: 767px) {
+    margin-right: 0;
     margin-bottom: 80px;
   }
 `;

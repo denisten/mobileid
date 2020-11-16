@@ -46,7 +46,14 @@ const CloseButton = styled.div`
 const wrapperId = 'modal-window-close-area';
 
 export const ModalWindow: React.FC<IModalWindow> = (props) => {
-  const { modalIsOpen, handler, content, handleCallMeBackClick, handleConsultMe, closeModalWindow } = props;
+  const {
+    modalIsOpen,
+    handler,
+    content,
+    handleCallMeBackClick,
+    handleConsultMe,
+    closeModalWindow,
+  } = props;
   const closeButtonClickHandler = (e: MouseEvent) => {
     e.stopPropagation();
     handler();
@@ -62,7 +69,12 @@ export const ModalWindow: React.FC<IModalWindow> = (props) => {
       case ModalWindowContent.CALL_ME_BACK:
         return <CallMeBack handler={handleCallMeBackClick} />;
       case ModalWindowContent.CONSULT_ME:
-        return <ConsultMe consultMeHandler={handleConsultMe} cancelHandler={closeModalWindow}/>;
+        return (
+          <ConsultMe
+            consultMeHandler={handleConsultMe}
+            cancelHandler={closeModalWindow}
+          />
+        );
       default:
         return null;
     }

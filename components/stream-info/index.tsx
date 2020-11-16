@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
   @media (max-width: 767px) {
     text-align: center;
-}
+  }
 `;
 const Description = styled.div`
   display: flex;
@@ -39,27 +39,27 @@ const Description = styled.div`
   margin-top: 40px;
   h5 {
     @media (max-width: 1279px) {
-          margin-left: 30px;
+      margin-left: 30px;
     }
     @media (max-width: 767px) {
-    margin-left: 0;
-    font-size: 22px;
-}
+      margin-left: 0;
+      font-size: 22px;
+    }
   }
   p {
     @media (max-width: 1279px) {
       width: auto;
       margin: 0 30px 30px;
     }
-    @media (max-width: 767px){
-    font-size: 17px;
-}
+    @media (max-width: 767px) {
+      font-size: 17px;
+    }
   }
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     flex-direction: column;
     align-items: center;
     margin-top: 34px;
-}
+  }
 `;
 const ButtonWrapper = styled.div`
   margin-top: 50px;
@@ -69,7 +69,7 @@ const ButtonWrapper = styled.div`
   @media (max-width: 767px) {
     margin-top: 30px;
     margin-left: 0;
-}
+  }
 `;
 
 const StreamInfoTitle = styled.div`
@@ -78,12 +78,12 @@ const StreamInfoTitle = styled.div`
   }
   font-size: 26px;
   font-weight: 600;
-  font-family: MuseoSansBold,sans-serif;
-@media (max-width: 767px) {
+  font-family: MuseoSansBold, sans-serif;
+  @media (max-width: 767px) {
     font-size: 35px;
     line-height: 47px;
-}
-`
+  }
+`;
 
 export const StreamInfo: React.FC<IHandler> = ({ handler }) => {
   return (

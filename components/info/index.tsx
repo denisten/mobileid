@@ -9,9 +9,9 @@ const Wrapper = styled.div`
   width: 844px;
   margin: 130px auto 50px;
   font-family: MuseoSansMedium, sans-serif;
-  @media (max-width: 1279px){
+  @media (max-width: 1279px) {
     width: auto;
-   }
+  }
 `;
 
 const InfoTitle = styled(Title)`
@@ -20,7 +20,7 @@ const InfoTitle = styled(Title)`
   font-size: 26px;
   color: #001424;
   font-weight: 700;
-  @media (max-width: 1279px){ 
+  @media (max-width: 1279px) {
     width: auto;
     height: auto;
     text-align: center;
@@ -34,12 +34,12 @@ const Advantages = styled.div`
   margin-top: 50px;
   margin-bottom: 50px;
   > div {
-    @media (max-width: 1279px){ 
+    @media (max-width: 1279px) {
       width: 50%;
-    } 
+    }
     @media (max-width: 767px) {
-    width: 75%;
-}
+      width: 75%;
+    }
   }
   ul {
     width: 380px;
@@ -55,10 +55,10 @@ const Advantages = styled.div`
       margin-left: 30px;
       margin-right: 10px;
     }
-    @media (max-width: 767px){
-    margin-left: auto;
-    margin-right: auto;
-}
+    @media (max-width: 767px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   li {
     font-size: 18px;
@@ -70,7 +70,7 @@ const Advantages = styled.div`
     color: #2e3c40;
     font-family: MuseoSans, sans-serif;
     font-weight: 300;
-    @media (max-width: 767px){
+    @media (max-width: 767px) {
       font-size: 14px;
     }
   }
@@ -85,11 +85,11 @@ const Advantages = styled.div`
     border-radius: 100%;
     background-color: #000;
   }
-  @media (max-width: 1279px){ 
+  @media (max-width: 1279px) {
     width: auto;
   }
   @media (max-width: 767px) {
-      height: auto;
+    height: auto;
     flex-direction: column;
     align-items: center;
   }
@@ -108,7 +108,7 @@ const ButtonsWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
+  }
 `;
 
 export const Info: React.FC<IHandler> = ({ handler }) => {
@@ -140,7 +140,7 @@ export const Info: React.FC<IHandler> = ({ handler }) => {
       </Advantages>
       <ButtonsWrapper>
         <ButtonConsult margin="0 35px 0 0" handler={handler} />
-        <ButtonDemo handler={() => window.open(process.env.demoUrl)}/>
+        <ButtonDemo handler={() => window.open(process.env.demoUrl)} />
       </ButtonsWrapper>
       <Note margin="50px 0 0 0" />
     </Wrapper>

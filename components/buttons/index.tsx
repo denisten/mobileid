@@ -32,8 +32,8 @@ const ButtonConsultWrapper = styled.button<IButtonWrapper>`
   @media (max-width: 767px) {
     margin-right: 0;
     margin-bottom: 30px;
-}
-  `;
+  }
+`;
 
 const CustomButtonWrapper = styled(ButtonConsultWrapper)`
   width: auto;

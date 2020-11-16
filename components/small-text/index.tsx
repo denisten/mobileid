@@ -15,8 +15,8 @@ const SmallTextWrapper = styled.div`
     font-size: 14px;
     line-height: 21px;
   }
-  @media (max-width: 767px){ 
-      width: auto;
+  @media (max-width: 767px) {
+    width: auto;
     height: auto;
     text-align: center;
     padding: 0 30px;

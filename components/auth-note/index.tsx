@@ -7,11 +7,11 @@ const Wrapper = styled.div<INote>`
   letter-spacing: 0;
   color: #202d3d;
   margin: ${(props) => props.margin || '30px auto 0'};
-  @media (max-width: 1279px){
+  @media (max-width: 1279px) {
     width: auto;
     text-align: center;
   }
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     font-size: 9px;
   }
 `;

@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { Slider } from '../slider';
 import {
   Info,
-  ISliderWithDescription, SimpleSubTitle, SimpleTitle,
+  ISliderWithDescription,
+  SimpleSubTitle,
+  SimpleTitle,
   SliderWrapper,
   SubTitle,
 } from '../auth-info';
@@ -55,7 +57,7 @@ export const AuthPin: React.FC<ISliderWithDescription> = (props) => {
           </li>
         </ul>
       </Info>
-      <Slider imgArray={imgArray} controllerColor="#6e7782" resizable={true}/>
+      <Slider imgArray={imgArray} controllerColor="#6e7782" resizable={true} />
     </Wrapper>
   );
 };
