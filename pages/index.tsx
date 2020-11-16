@@ -16,6 +16,31 @@ import { ModalWindow } from '../components/modal-window';
 import {BackgroundImg} from "../components/background-img";
 import * as emailJs  from 'emailjs-com';
 import { connectToDB } from '../utils/connect-to-db';
+import { ButtonConsult, ButtonDemo } from '../components/buttons';
+import styled from 'styled-components';
+
+const AppWrapper = styled.div`
+@media (max-width: 1279px) {
+overflow-x: hidden;
+}
+`
+
+const ButtonsWrapper = styled.div`
+  width: 844px;
+  display: flex;
+  margin: 110px auto;
+  @media (max-width: 1279px) {
+    padding-left: 30px;
+  }
+  @media (max-width: 767px) {
+    width: auto;
+    padding-left: 0;
+    margin: 100px auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
 
 export enum ModalWindowContent {
     CALL_ME_BACK = 'callMeBack',
@@ -52,7 +77,7 @@ const HomePage: React.FC<IFeedbackQuestion> = (props) => {
   }, [])
 
   return (
-    <>
+    <AppWrapper>
           <ModalWindow
             closeModalWindow={closeModalWindow}
             modalIsOpen={modalIsOpen}
@@ -62,7 +87,11 @@ const HomePage: React.FC<IFeedbackQuestion> = (props) => {
             handleConsultMe={handleConsultMe}
           />
           <Header handler={openModalCallMeBack}/>
-          <About handler={openModalWindow}/>
+          <About/>
+      <ButtonsWrapper>
+        <ButtonConsult margin="0 85px 0 0" handler={openModalWindow} />
+        <ButtonDemo handler={() => window.open(process.env.demoUrl)} />
+      </ButtonsWrapper>
         <InfoInNumbers/>
         <SmallText/>
         <AuthInfo backgroundColor="#6e7782"/>
@@ -75,7 +104,7 @@ const HomePage: React.FC<IFeedbackQuestion> = (props) => {
         <StreamInfo handler={openModalWindow}/>
         <FAQ/>
         <FeedbackQuestion likes={likes} dislikes={dislikes}/>
-    </>
+    </AppWrapper>
   );
 };
 

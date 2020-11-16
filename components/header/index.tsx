@@ -11,16 +11,16 @@ const Wrapper = styled.div`
   color: #fff;
   font-size: 25px;
   font-weight: 300;
+  @media (max-width: 1279px) {
+    padding: 15px;
+    font-size: 20px;
+  }
   @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
     height: auto;
     text-align: center;
     font-size: 14px;
-  }
-  @media (max-width: 1279px) {
-    padding: 15px;
-    font-size: 20px;
   }
   a {
     color: #fff;

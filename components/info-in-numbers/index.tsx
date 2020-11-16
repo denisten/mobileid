@@ -6,6 +6,14 @@ const Wrapper = styled.div`
   width: 844px;
   margin: auto;
   font-family: MuseoSansBold, sans-serif;
+  @media (max-width: 1279px) {
+    padding-left: 30px;
+  }
+  @media (max-width: 767px) {
+    padding-left: 0;
+    width: auto;
+    justify-content: space-evenly;
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -26,6 +34,10 @@ const InfoWrapper = styled.div`
     font-weight: 300;
     line-height: 1.56;
     color: #5a6d73;
+  }
+  @media (max-width: 767px){ 
+      margin-right: 0;
+    margin-bottom: 80px;
   }
 `;
 

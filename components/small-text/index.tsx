@@ -15,6 +15,14 @@ const SmallTextWrapper = styled.div`
     font-size: 14px;
     line-height: 21px;
   }
+  @media (max-width: 767px){ 
+      width: auto;
+    height: auto;
+    text-align: center;
+    padding: 0 30px;
+    margin-top: 20px;
+    margin-bottom: 208px;
+  }
   a {
     color: #c000d9;
     text-decoration: none;

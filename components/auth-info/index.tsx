@@ -13,6 +13,10 @@ export const SliderWrapper = styled.div<IWrapper>`
   line-height: 1.56;
   z-index: 0;
   color: #fff;
+  @media (max-width: 1297px) {
+    width: auto;
+    height: auto;
+  }
   ul {
     padding: 0;
     line-height: 28.08px;
@@ -22,6 +26,10 @@ export const SliderWrapper = styled.div<IWrapper>`
       padding: 5px 0 5px 24px;
       font-size: 18px;
       position: relative;
+      @media (max-width: 767px) {
+        font-size: 14px;  
+        padding: 0 0 0 24px;
+      }
     }
     li::before {
       position: absolute;
@@ -33,6 +41,10 @@ export const SliderWrapper = styled.div<IWrapper>`
       border-radius: 100%;
       background-color: #fff;
       top: 50%;
+    }
+    @media (max-width: 1279px) {
+      width: auto;
+      height: auto;
     }
   }
   ol {
@@ -46,7 +58,14 @@ export const SliderWrapper = styled.div<IWrapper>`
     justify-content: space-evenly;
     list-style: none;
     counter-reset: numeric-counter;
-
+    @media (max-width: 1279px) {
+      width: auto;
+      height: auto;
+    }
+    @media (max-width: 767px){ 
+      font-size: 14px;
+      line-height: 17px;
+    }
     li {
       counter-increment: numeric-counter;
       position: relative;
@@ -72,13 +91,37 @@ export const Info = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const SimpleTitle = styled.div`
   font-size: 26px;
   font-weight: 600;
+  font-family: MuseoSansBold,sans-serif;
+  @media (max-width: 1279px){
+    text-align: center;
+  }
+  @media (max-width: 767px){ 
+    text-align: center;
+    font-size: 21px;
+  }
+`
+export const Title = styled(SimpleTitle)`
 `;
-export const SubTitle = styled.div`
+export const SimpleSubTitle = styled.div`
   font-size: 23px;
   font-weight: 600;
+  font-family: MuseoSansBold,sans-serif;
+  @media ( max-width: 1279px) {
+    padding: 0 30px;
+    text-align: center;
+  }
+  @media (max-width: 767px){ 
+      text-align: center;
+    font-size: 18px;
+  }
+`
+export const SubTitle = styled(SimpleSubTitle)`
+@media (max-width: 767px){
+    font-size: 18px;
+}
 `;
 const imgArray = [
   '/static/img/slider-1/1.1.png',
@@ -92,7 +135,7 @@ export const AuthInfo: React.FC<ISliderWithDescription> = (props) => {
   return (
     <SliderWrapper {...props}>
       <Info>
-        <Title>Авторизация с вводом номера</Title>
+        <SimpleTitle>Авторизация с вводом номера</SimpleTitle>
         <ol>
           <li>
             Клиент на сайте выбирает как способ входа или регистрации «Мобильный
@@ -104,7 +147,7 @@ export const AuthInfo: React.FC<ISliderWithDescription> = (props) => {
             вход и передачу данных, нажатием кнопки «Ок»
           </li>
         </ol>
-        <SubTitle>Возможности</SubTitle>
+        <SimpleSubTitle>Возможности</SimpleSubTitle>
         <ul>
           <li>Минимальное количество шагов</li>
           <li>Безопасность передачи данных</li>
@@ -114,7 +157,7 @@ export const AuthInfo: React.FC<ISliderWithDescription> = (props) => {
           </li>
         </ul>
       </Info>
-      <Slider imgArray={imgArray} />
+      <Slider imgArray={imgArray} resizable={true} />
     </SliderWrapper>
   );
 };

@@ -12,7 +12,14 @@ const Wrapper = styled.div`
   h3 {
     text-align: center;
     margin-bottom: 30px;
+    @media (max-width: 767px){
+      font-size: 33px;
+    }
   }
+  @media (max-width: 767px) {
+    width: auto;
+    margin: 114px 30px;
+    }
 `;
 
 const AccordionWrapper = styled.div`
@@ -27,6 +34,9 @@ const FAQNote = styled.div`
   color: #202d3d;
   margin-top: 50px;
   font-family: MuseoSans, sans-serif;
+  @media (max-width: 767px) {
+    font-size: 9px;
+}
 `;
 
 const initState = new Array(9).fill(false);
