@@ -114,20 +114,22 @@ const initDBData = {
 }
 
 export const getStaticProps = async () : Promise<{ props: IFeedbackQuestion }> => {
-  const collection = await connectToDB();
+  // const collection = await connectToDB();
   // await collection.insertOne({...initDBData})
-  const data = await collection.findOne({}, { fields: { _id: 0}});
-  if(!data) {
-    await collection.insertOne(initDBData);
-    return {
-      props: initDBData
-    }
-  } else {
+  // const data = await collection.findOne({}, { fields: { _id: 0}});
+  // if(!data) {
+  //   await collection.insertOne(initDBData);
+  //   return {
+  //     props: initDBData
+    // }
+  // } else {
   return {
     props: {
-      likes: data.likes,
-      dislikes: data.dislikes
+      likes: 0,
+      dislikes: 0
+      // likes: data.likes,
+      // dislikes: data.dislikes
     },
   }}
-}
+// }
 export default HomePage;
