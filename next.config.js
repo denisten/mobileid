@@ -32,8 +32,7 @@ module.exports = withFonts(
     },
     env: {
       demoUrl: 'https://store.mobcon.prostream.ru/',
-      DATA_BASE_URL: 'mongodb://den:denlikepro@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false'
-      // dataBaseUrl: process.env.HOME
+      DATA_BASE_URL: 'mongodb://den:denlikepro@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false&connectTimeoutMS=5000'
     }
   })
 );
