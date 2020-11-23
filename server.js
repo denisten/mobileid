@@ -16,15 +16,16 @@ app.prepare().then(() => {
 
   server.post('/api/send-mail',  async (req, res) => {
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: "10.10.140.24",
+      port: 25,
+      secure: false,
       auth: {
-        user: 'stream.mobile.id@gmail.com',
-        pass: 'STREAM!!!'
+        user: null,
+        pass: null,
       }
     });
     const {type, data} = req.body
     let result;
-    console.log('receiver: ',process.env.INBOX_MAIL)
     try {
       switch (type) {
         case 'callMeBack':
@@ -56,8 +57,8 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  server.listen(3000, (err) => {
+  server.listen(process.env.APP_PORT, (err) => {
     if (err) throw err
-    console.log('> Read on http://localhost:3000')
+    console.log(`> Read on http://localhost:${process.env.APP_PORT}`)
   })
 })
