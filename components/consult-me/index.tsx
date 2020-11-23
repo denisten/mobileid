@@ -10,7 +10,7 @@ const MultilineInput = styled.textarea`
   width: 100%;
   min-height: 160px;
   resize: none;
-  font-family: MuseoSans, sans-serif;
+  font-family: MuseoSansCyrl, sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: normal;

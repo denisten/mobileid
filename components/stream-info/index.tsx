@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     font-size: 18px;
     line-height: 24px;
     color: #5a6d73;
-    font-family: MuseoSans, sans-serif;
+    font-family: MuseoSansCyrl, sans-serif;
     margin-bottom: 30px;
   }
   @media (max-width: 1279px) {

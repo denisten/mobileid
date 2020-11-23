@@ -20,7 +20,7 @@ export const ModalWindowContentWrapper = styled.form`
     width: 100%;
   }
   input {
-    font-family: MuseoSans, sans-serif;
+    font-family: MuseoSansCyrl, sans-serif;
     font-size: 16px;
     font-weight: 300;
     line-height: normal;

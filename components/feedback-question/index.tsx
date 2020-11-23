@@ -9,7 +9,7 @@ const TitleWrapper = styled.div`
   font-size: 27px;
   line-height: 20px;
   color: #001424;
-  font-family: MuseoSans, sans-serif;
+  font-family: MuseoSansCyrl, sans-serif;
   font-weight: 600;
   text-align: center;
   padding: 0 30px;

@@ -20,7 +20,7 @@ const Wrapper = styled(SliderWrapper)`
     }
   }
   ${SubTitle} {
-    font-family: MuseoSans, sans-serif;
+    font-family: MuseoSansCyrl, sans-serif;
     font-weight: 600;
   }
 `;

@@ -68,7 +68,7 @@ const Advantages = styled.div`
     position: relative;
     padding-left: 24px;
     color: #2e3c40;
-    font-family: MuseoSans, sans-serif;
+    font-family: MuseoSansCyrl, sans-serif;
     font-weight: 300;
     @media (max-width: 767px) {
       font-size: 14px;

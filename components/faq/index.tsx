@@ -7,7 +7,7 @@ import { data } from './data';
 const Wrapper = styled.div`
   width: 690px;
   margin: 100px auto;
-  font-family: MuseoSans, sans-serif;
+  font-family: MuseoSansCyrl, sans-serif;
   list-style: none;
   h3 {
     text-align: center;
@@ -33,7 +33,7 @@ const FAQNote = styled.div`
   letter-spacing: 0;
   color: #202d3d;
   margin-top: 50px;
-  font-family: MuseoSans, sans-serif;
+  font-family: MuseoSansCyrl, sans-serif;
   @media (max-width: 767px) {
     font-size: 9px;
   }
