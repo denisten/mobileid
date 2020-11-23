@@ -36,7 +36,7 @@ export const AuthPin: React.FC<ISliderWithDescription> = (props) => {
   return (
     <Wrapper {...props}>
       <Info>
-        <SimpleTitle>Авторизация с вводом PIN-кода *</SimpleTitle>
+        <SimpleTitle>Авторизация с вводом PIN-кода</SimpleTitle>
         <Description>
           На сайтах с повышенными требованиями к безопасности, а также где в
           онлайн требуется подтверждение значимых операций, заказа, платежной
