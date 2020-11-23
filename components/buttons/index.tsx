@@ -77,7 +77,7 @@ export const CancelButton: React.FC<IHandler> = ({ handler }) => {
 export const ButtonCallMeBack: React.FC<IHandler> = ({ handler }) => {
   return (
     <ButtonConsultWrapper onClick={(e) => handler(e)}>
-      Отправить запрос на звонок
+      Отправить запрос
     </ButtonConsultWrapper>
   );
 };
