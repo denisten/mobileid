@@ -76,7 +76,7 @@ export const CancelButton: React.FC<IHandler> = ({ handler }) => {
 
 export const ButtonCallMeBack: React.FC<IHandler> = ({ handler }) => {
   return (
-    <ButtonConsultWrapper onClick={() => handler()}>
+    <ButtonConsultWrapper onClick={(e) => handler(e)}>
       Отправить запрос на звонок
     </ButtonConsultWrapper>
   );
@@ -86,7 +86,7 @@ export const ButtonDemo: React.FC<IButton> = (props) => {
   return (
     <ButtonDemoWrapper
       {...props}
-      onClick={() => window.open(process.env.demoUrl)}
+      onClick={() => window.open(process.env.DEMO_URL)}
     >
       Демо доступ
     </ButtonDemoWrapper>

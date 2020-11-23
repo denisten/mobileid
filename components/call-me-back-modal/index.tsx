@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ButtonCallMeBack } from '../buttons';
 
@@ -50,10 +50,15 @@ export const ModalWindowContentWrapper = styled.form`
   }
 `;
 export const CallMeBack: React.FC<ICallMeBack> = ({ handler }) => {
+  const [name, setName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    handler();
+    handler({name, phoneNumber});
   };
+
+
   return (
     <ContentWrapper>
       <div>
@@ -65,6 +70,8 @@ export const CallMeBack: React.FC<ICallMeBack> = ({ handler }) => {
               name="name"
               placeholder="Ваше имя"
               aria-label="Ваше имя"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div>
@@ -73,10 +80,12 @@ export const CallMeBack: React.FC<ICallMeBack> = ({ handler }) => {
               name="name"
               placeholder="Ваш номер телефона"
               aria-label="Ваше имя"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
           <div className="button-wrapper">
-            <ButtonCallMeBack handler={handler} />
+            <ButtonCallMeBack handler={submitHandler} />
           </div>
           <div className="description">
             Нажав кнопку отправить запрос вы подтверждаете свое согласие на

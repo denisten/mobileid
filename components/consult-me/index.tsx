@@ -32,10 +32,6 @@ export const ConsultMe: React.FC<IConsultMe> = ({
   const inputRef = useRef(null);
   const [hasError, setHasError] = useState(true);
 
-  const emailOnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    // @ts-ignore
-    setEmail(e?.target?.value);
-  };
   const onBlur = () =>
     regExp.test(String(email).toLowerCase())
       ? setHasError(false)
@@ -50,10 +46,12 @@ export const ConsultMe: React.FC<IConsultMe> = ({
     }, 100);
   }, []);
 
+  const submitHandler = () => consultMeHandler({email, message})
+
   return (
     <ContentWrapper>
       <div>
-        <ModalWindowContentWrapper onSubmit={(e) => consultMeHandler(e)}>
+        <ModalWindowContentWrapper onSubmit={submitHandler}>
           <h4>Отправка заявки на получение консультации</h4>
           <div>
             <input
@@ -64,7 +62,7 @@ export const ConsultMe: React.FC<IConsultMe> = ({
               name="email"
               placeholder="Email"
               aria-label="Email"
-              onChange={emailOnChangeHandler}
+              onChange={e => setEmail(e.target.value)}
               onBlur={onBlur}
               value={email}
             />
@@ -75,11 +73,13 @@ export const ConsultMe: React.FC<IConsultMe> = ({
               placeholder="Дополнительные сведения"
               maxLength={500}
               aria-label="Дополнительные сведения"
+              value={message}
+              onChange={e => setMessage(e.target.value)}
             />
           </div>
           <div className="button-wrapper">
             <SendButton
-              handler={(e: MouseEvent) => consultMeHandler(e)}
+              handler={submitHandler}
               disableFlag={hasError}
             />
             <CancelButton handler={cancelHandler} />

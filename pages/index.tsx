@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Header} from "../components/header";
 import {About} from "../components/about";
 import {InfoInNumbers} from "../components/info-in-numbers";
@@ -14,7 +14,6 @@ import { FAQ } from '../components/faq';
 import { FeedbackQuestion, IFeedbackQuestion } from '../components/feedback-question';
 import { ModalWindow } from '../components/modal-window';
 import {BackgroundImg} from "../components/background-img";
-import * as emailJs  from 'emailjs-com';
 import { connectToDB } from '../utils/connect-to-db';
 import { ButtonConsult, ButtonDemo } from '../components/buttons';
 import styled from 'styled-components';
@@ -59,22 +58,34 @@ const HomePage: React.FC<IFeedbackQuestion> = (props) => {
           setModalIsOpen(false)
           setModalWindowContent(null)
       }
+
       const openModalCallMeBack = () => {
         setModalIsOpen(true)
         setModalWindowContent(ModalWindowContent.CALL_ME_BACK)
       }
-      const handleConsultMe = (e: FormEvent | MouseEvent) => {
-        e?.preventDefault();
+
+      const handleConsultMe = ({message, email}: IConsultTemplate) => {
+        fetch('api/send-mail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({type: MailTypes.CONSULT, data: { message, email } })
+        })
         closeModalWindow();
-        try {
-          emailJs.send("service_wv4dcmn","template_0ivvt26")
-        } catch (e) {
-          debugger;
-        }
-  }
-  useEffect(() => {
-    emailJs.init("user_H3ZxuUJ223G9Qu90RDP4U");
-  }, [])
+      }
+
+      const handleCallMeBack = ({phoneNumber, name}: ICallMeBackTemplate) => {
+        closeModalWindow();
+        const data = { type: MailTypes.CALL_ME_BACK, data: { phoneNumber, name } }
+        fetch('api/send-mail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(data)
+        })
+      }
 
   return (
     <AppWrapper>
@@ -83,7 +94,7 @@ const HomePage: React.FC<IFeedbackQuestion> = (props) => {
             modalIsOpen={modalIsOpen}
             handler={closeModalWindow}
             content={modalWindowContent}
-            handleCallMeBackClick={closeModalWindow}
+            handleCallMeBackClick={handleCallMeBack}
             handleConsultMe={handleConsultMe}
           />
           <Header handler={openModalCallMeBack}/>
@@ -115,7 +126,6 @@ const initDBData = {
 
 export const getServerSideProps = async () : Promise<{ props: IFeedbackQuestion }> => {
   try {
-    console.log(process.env)
     const collection = await connectToDB();
     await collection.insertOne({...initDBData})
     const data = await collection.findOne({}, { fields: { _id: 0}});
@@ -137,3 +147,18 @@ export const getServerSideProps = async () : Promise<{ props: IFeedbackQuestion 
   }
 }
 export default HomePage;
+
+enum MailTypes {
+  CALL_ME_BACK= 'callMeBack',
+  CONSULT = 'consult'
+}
+
+interface IConsultTemplate {
+  email: string;
+  message: string;
+}
+
+interface ICallMeBackTemplate {
+  name: string;
+  phoneNumber: string;
+}

@@ -71,12 +71,13 @@ export const FeedbackQuestion: React.FC<IFeedbackQuestion> = (props) => {
       setLikes(likes + 1);
       localStorage.setItem('feedback', 'like');
     } else if (feedback === 'dislike') {
+      const updatedDislikes = dislikes - 1 >= 0 ? dislikes - 1 : 0;
       await fetch(Routes.updateFeedback, {
         method: 'POST',
-        body: JSON.stringify({ likes: likes + 1, dislikes: dislikes - 1 }),
+        body: JSON.stringify({ likes: likes + 1, dislikes: updatedDislikes }),
       });
       setLikes(likes + 1);
-      setDislikes(dislikes - 1);
+      setDislikes(updatedDislikes);
       localStorage.setItem('feedback', 'like');
     }
   };
@@ -91,11 +92,12 @@ export const FeedbackQuestion: React.FC<IFeedbackQuestion> = (props) => {
       setDislikes(dislikes + 1);
       localStorage.setItem('feedback', 'dislike');
     } else if (feedback === 'like') {
+      const updatedLikes = likes - 1 > 0 ? likes - 1 : 0;
       await fetch(Routes.updateFeedback, {
         method: 'POST',
-        body: JSON.stringify({ likes: likes - 1, dislikes: dislikes + 1 }),
+        body: JSON.stringify({ likes: updatedLikes, dislikes: dislikes + 1 }),
       });
-      setLikes(likes - 1);
+      setLikes(updatedLikes);
       setDislikes(dislikes + 1);
       localStorage.setItem('feedback', 'dislike');
     }
